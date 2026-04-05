@@ -10,7 +10,7 @@ export const getAllProducts = async (req, res) => {
 export const getProductById = async (req, res) => {
   const { productId } = req.params;
   const { _id: userId } = req.user;
-  const product = await Product.findOne({ ...productId, userId });
+  const product = await Product.findOne({ _id: productId, userId });
 
   if (!product) {
     throw createHttpError(404, 'Product not found');
