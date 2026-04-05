@@ -6,9 +6,11 @@ import {
   getProductById,
   updateProduct,
 } from '../controllers/productsController.js';
+import { authenticate } from '../middleware/authenticate.js';
 
 const router = Router();
 
+router.use('/', authenticate);
 router.get('/', getAllProducts);
 router.get('/:productId', getProductById);
 router.post('/', createProduct);
